@@ -71,7 +71,7 @@ export default function CheckoutView() {
     try {
       e.preventDefault();
       setSubmiting(true);
-      const responseOrder = await fetch("http://localhost:4000/api/orders", {
+      const responseOrder = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export default function CheckoutView() {
       }
       const orderCreated = await responseOrder.json();
       const orderDetailsCreated = cart.map((cartItem) => {
-        return fetch("http://localhost:4000/api/orderDetails", {
+        return fetch(`${import.meta.env.VITE_API_URL}/api/orderDetails`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export default function CheckoutView() {
   async function fetchOrderShippingMethodsAndOrderPaymentMethods() {
     try {
       const responseOrderShippingMethods = await fetch(
-        "http://localhost:4000/api/orderShippingMethods"
+        `${import.meta.env.VITE_API_URL}/api/orderShippingMethods`
       );
       if (!responseOrderShippingMethods.ok) {
         throw new Error();
@@ -123,7 +123,7 @@ export default function CheckoutView() {
       setOrderShippingMethods(orderShippingMethods);
 
       const responseOrderPaymentMethods = await fetch(
-        "http://localhost:4000/api/orderPaymentMethods"
+        `${import.meta.env.VITE_API_URL}/api/orderPaymentMethods`
       );
       if (!responseOrderPaymentMethods.ok) {
         throw new Error();
@@ -141,7 +141,7 @@ export default function CheckoutView() {
         navigate("/auth/login");
       }
       const responseUser = await fetch(
-        `http://localhost:4000/api/users/${currentUser.id}`
+        `${import.meta.env.VITE_API_URL}/api/users/${currentUser.id}`
       );
       if (!responseUser.ok) {
         navigate("/auth/login");

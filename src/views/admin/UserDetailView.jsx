@@ -107,7 +107,7 @@ export default function UserDetailView() {
   });
 
   async function fetchUser() {
-    const response = await fetch(`http://localhost:4000/api/users/${id}`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`);
     const user = await response.json();
     console.log(user);
     setUser(user);

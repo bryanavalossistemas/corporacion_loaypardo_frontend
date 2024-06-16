@@ -99,7 +99,7 @@ export default function ListProductCategoriesView() {
   async function fetchProductCategories() {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/productCategories"
+        `${import.meta.env.VITE_API_URL}/api/productCategories`
       );
       const productCategories = await response.json();
       const filteredProductCategories = productCategories.map(

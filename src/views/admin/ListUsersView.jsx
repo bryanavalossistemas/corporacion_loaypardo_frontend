@@ -31,7 +31,7 @@ export default function ListUsersView() {
   async function toggleActiveUser(id) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/users/${id}/active`,
+        `${import.meta.env.VITE_API_URL}/api/users/${id}/active`,
         {
           method: "PATCH",
           headers: {
@@ -133,7 +133,7 @@ export default function ListUsersView() {
   });
 
   async function fetchUsers() {
-    const response = await fetch("http://localhost:4000/api/users");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users`);
     const users = await response.json();
 
     setUsers(

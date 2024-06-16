@@ -89,7 +89,7 @@ export default function UpdateProductCategoryView() {
   async function addToProductCategoryProducts(productSelected) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/products/${productSelected.id}`,
+        `${import.meta.env.VITE_API_URL}/api/products/${productSelected.id}`,
         {
           method: "PATCH",
           headers: {
@@ -119,7 +119,7 @@ export default function UpdateProductCategoryView() {
   async function removeFromProductCategoryProducts(productSelected) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/products/${productSelected.id}/null`,
+        `${import.meta.env.VITE_API_URL}/api/products/${productSelected.id}/null`,
         {
           method: "PATCH",
           headers: {
@@ -168,7 +168,7 @@ export default function UpdateProductCategoryView() {
         imageUrl = imageData.url;
       }
       const response = await fetch(
-        `http://localhost:4000/api/productCategories/${productCategory.id}`,
+        `${import.meta.env.VITE_API_URL}/api/productCategories/${productCategory.id}`,
         {
           method: "PUT",
           headers: {
@@ -212,7 +212,7 @@ export default function UpdateProductCategoryView() {
   async function fetchProductCategoryAndProducts() {
     try {
       const responseProductCategory = await fetch(
-        `http://localhost:4000/api/productCategories/${id}`
+        `${import.meta.env.VITE_API_URL}/api/productCategories/${id}`
       );
       if (!responseProductCategory.ok) {
         throw new Error();
@@ -221,7 +221,7 @@ export default function UpdateProductCategoryView() {
       setProductCategory(productCategory);
 
       const responseProducts = await fetch(
-        "http://localhost:4000/api/products"
+        `${import.meta.env.VITE_API_URL}/api/products`
       );
       if (!responseProducts.ok) {
         throw new Error();

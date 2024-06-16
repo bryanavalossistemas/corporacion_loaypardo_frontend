@@ -65,7 +65,7 @@ export default function UserOrdersView() {
         navigate("/auth/login");
       }
       const responseUser = await fetch(
-        `http://localhost:4000/api/users/${currentUser.id}`
+        `${import.meta.env.VITE_API_URL}/api/users/${currentUser.id}`
       );
       if (!responseUser.ok) {
         navigate("/auth/login");
@@ -78,7 +78,7 @@ export default function UserOrdersView() {
   async function fetchOrdersByUserId() {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/orders/user/${currentUser.id}`
+        `${import.meta.env.VITE_API_URL}/api/orders/user/${currentUser.id}`
       );
       const orders = await response.json();
       const data = orders.map((order) => {

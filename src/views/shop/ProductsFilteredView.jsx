@@ -13,7 +13,7 @@ export default function ProductsFilteredView() {
   async function fetchProductsByQueryAndOrderBy() {
     try {
       const responseProducts = await fetch(
-        `http://localhost:4000/api/products/query?query=${
+        `${import.meta.env.VITE_API_URL}/api/products/query?query=${
           query ?? ""
         }&orderBy=${orderByParam ?? ""}`
       );

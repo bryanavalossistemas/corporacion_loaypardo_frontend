@@ -113,7 +113,7 @@ export default function ListOrdersView() {
 
   async function fetchProductCategories() {
     try {
-      const response = await fetch("http://localhost:4000/api/orders");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`);
       const orders = await response.json();
       console.log(orders);
       const filteredOrders = orders.map((order) => {

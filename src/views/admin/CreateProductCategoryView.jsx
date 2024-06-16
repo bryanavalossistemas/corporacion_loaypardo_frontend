@@ -130,7 +130,7 @@ export default function CreateSerieView() {
       const imageData = await cloudinaryResponse.json();
       const imageUrl = imageData.url;
       const response = await fetch(
-        "http://localhost:4000/api/productCategories",
+        `${import.meta.env.VITE_API_URL}/api/productCategories`,
         {
           method: "POST",
           headers: {
@@ -148,7 +148,7 @@ export default function CreateSerieView() {
       }
       const productCategoryCreated = await response.json();
       const updatedProducts = productCategory.products.map((product) => {
-        return fetch(`http://localhost:4000/api/products/${product.id}`, {
+        return fetch(`${import.meta.env.VITE_API_URL}/api/products/${product.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -187,7 +187,7 @@ export default function CreateSerieView() {
 
   async function fetchProducts() {
     try {
-      const response = await fetch("http://localhost:4000/api/products");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
       if (!response.ok) {
         throw new Error();
       }

@@ -15,7 +15,7 @@ export default function ShopMainView() {
   async function fetchProductCategoriesAndFetchProducts() {
     try {
       const responseProductCategories = await fetch(
-        "http://localhost:4000/api/productCategories"
+        `${import.meta.env.VITE_API_URL}/api/productCategories`
       );
       if (!responseProductCategories.ok) {
         throw new Error();
@@ -24,7 +24,7 @@ export default function ShopMainView() {
       setProductCategories(productCategories);
 
       const responseProducts = await fetch(
-        "http://localhost:4000/api/products/active"
+        `${import.meta.env.VITE_API_URL}/api/products/active`
       );
       if (!responseProducts.ok) {
         throw new Error();

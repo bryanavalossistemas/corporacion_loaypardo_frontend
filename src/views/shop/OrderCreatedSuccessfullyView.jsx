@@ -7,7 +7,7 @@ export default function OrderCreatedSuccessfullyView() {
   async function fetchProductCategoriesAndFetchProducts() {
     try {
       const responseProducts = await fetch(
-        "http://localhost:4000/api/products/active"
+        `${import.meta.env.VITE_API_URL}/api/products/active`
       );
       if (!responseProducts.ok) {
         throw new Error();

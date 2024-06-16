@@ -42,7 +42,7 @@ export default function OrderDetailView() {
     try {
       e.preventDefault();
       const responseCancelOrder = await fetch(
-        `http://localhost:4000/api/orders/${id}/cancel`,
+        `${import.meta.env.VITE_API_URL}/api/orders/${id}/cancel`,
         {
           method: "PATCH",
           headers: {
@@ -67,7 +67,7 @@ export default function OrderDetailView() {
         navigate("/auth/login");
       }
       const responseUser = await fetch(
-        `http://localhost:4000/api/users/${currentUser.id}`
+        `${import.meta.env.VITE_API_URL}/api/users/${currentUser.id}`
       );
       if (!responseUser.ok) {
         navigate("/auth/login");
@@ -80,7 +80,7 @@ export default function OrderDetailView() {
   async function fetchOrderShippingMethodsAndOrderPaymentMethodsAndOrder() {
     try {
       const responseOrderShippingMethods = await fetch(
-        "http://localhost:4000/api/orderShippingMethods"
+        `${import.meta.env.VITE_API_URL}/api/orderShippingMethods`
       );
       if (!responseOrderShippingMethods.ok) {
         throw new Error();
@@ -89,7 +89,7 @@ export default function OrderDetailView() {
       setOrderShippingMethods(orderShippingMethods);
 
       const responseOrderPaymentMethods = await fetch(
-        "http://localhost:4000/api/orderPaymentMethods"
+        `${import.meta.env.VITE_API_URL}/api/orderPaymentMethods`
       );
       if (!responseOrderPaymentMethods.ok) {
         throw new Error();
@@ -98,7 +98,7 @@ export default function OrderDetailView() {
       setOrderPaymentMethods(orderPaymentMethods);
 
       const responseOrder = await fetch(
-        `http://localhost:4000/api/orders/${id}`
+        `${import.meta.env.VITE_API_URL}/api/orders/${id}`
       );
       if (!responseOrder.ok) {
         throw new Error();

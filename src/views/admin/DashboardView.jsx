@@ -14,7 +14,7 @@ export default function DashboardView() {
   async function fetchOrdersAndUsers() {
     try {
       const responseOrders = await fetch(
-        `http://localhost:4000/api/orders/createdAt?createdAt=${
+        `${import.meta.env.VITE_API_URL}/api/orders/createdAt?createdAt=${
           createdAt ? createdAt : now()
         }`
       );
@@ -25,7 +25,7 @@ export default function DashboardView() {
       setOrders(orders);
 
       const responseUsers = await fetch(
-        `http://localhost:4000/api/users/createdAt?createdAt=${
+        `${import.meta.env.VITE_API_URL}/api/users/createdAt?createdAt=${
           createdAt ? createdAt : now()
         }`
       );

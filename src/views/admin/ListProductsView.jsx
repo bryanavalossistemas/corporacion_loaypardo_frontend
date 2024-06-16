@@ -30,7 +30,7 @@ export default function ListProductsView() {
   async function toggleActiveProduct(id) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/products/${id}/active`,
+        `${import.meta.env.VITE_API_URL}/api/products/${id}/active`,
         {
           method: "PATCH",
           headers: {
@@ -160,7 +160,7 @@ export default function ListProductsView() {
 
   async function fetchProducts() {
     try {
-      const response = await fetch("http://localhost:4000/api/products");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
       const products = await response.json();
       const filteredProducts = products.map((product) => {
         return {

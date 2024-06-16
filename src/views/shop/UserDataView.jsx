@@ -21,7 +21,7 @@ export default function UserDataView() {
       e.preventDefault();
       setSubmiting(true);
       const responseUser = await fetch(
-        `http://localhost:4000/api/users/${currentUser.id}`,
+        `${import.meta.env.VITE_API_URL}/api/users/${currentUser.id}`,
         {
           method: "PUT",
           headers: {
@@ -54,7 +54,7 @@ export default function UserDataView() {
         navigate("/auth/login");
       }
       const responseUser = await fetch(
-        `http://localhost:4000/api/users/${currentUser.id}`
+        `${import.meta.env.VITE_API_URL}/api/users/${currentUser.id}`
       );
       if (!responseUser.ok) {
         navigate("/auth/login");

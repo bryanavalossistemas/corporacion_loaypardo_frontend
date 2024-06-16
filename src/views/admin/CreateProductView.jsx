@@ -94,7 +94,7 @@ export default function CreateProductView() {
       }
       const imageData = await cloudinaryResponse.json();
       const imageUrl = imageData.url;
-      const response = await fetch("http://localhost:4000/api/products", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export default function CreateProductView() {
       const productCreated = await response.json();
       const updatedCharacteristics = product.productCharacteristics.map(
         (productCharacteristic) => {
-          return fetch("http://localhost:4000/api/productCharacteristics", {
+          return fetch(`${import.meta.env.VITE_API_URL}/api/productCharacteristics`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function CreateProductView() {
   async function fetchProductCategoriesAndProductBrands() {
     try {
       const responseProductCategories = await fetch(
-        "http://localhost:4000/api/productCategories"
+        `${import.meta.env.VITE_API_URL}/api/productCategories`
       );
       if (!responseProductCategories.ok) {
         throw new Error();
@@ -165,7 +165,7 @@ export default function CreateProductView() {
       setProductCategories(productCategories);
 
       const responseProductBrands = await fetch(
-        "http://localhost:4000/api/productBrands"
+        `${import.meta.env.VITE_API_URL}/api/productBrands`
       );
       if (!responseProductBrands.ok) {
         throw new Error();
